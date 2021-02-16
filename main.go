@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 	"text/template"
-	"projetoGov3\models"
+	"github.com/David-Nascimento/models"
 )
 
 var temp = template.Must(template.ParseGlob("templates/*.html"))
@@ -14,6 +14,7 @@ func main() {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	temp.ExecuteTemplate(w, "Index", produtos)
+	todosOsProdutos := models.BuscaTodosOsProdutos()
+	temp.ExecuteTemplate(w, "Index", todosOsProdutos)
 
 }

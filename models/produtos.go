@@ -1,6 +1,8 @@
 package models
 
-import "projetoGov3\db"
+import (
+	"github.com/David-Nascimento/db"
+)
 
 type Produto struct {
 	Nome, Descricao string
@@ -8,8 +10,8 @@ type Produto struct {
 	Quantidade      int
 }
 
-func BuscaTodosOsProdutos() {
-	db := db.conectaComBancoDeDados()
+func BuscaTodosOsProdutos() []Produto {
+	db := db.ConectaComBancoDeDados()
 
 	selectDeTodosOsProdutos, err := db.Query("select * from produtos")
 	if err != nil {
